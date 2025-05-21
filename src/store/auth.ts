@@ -209,6 +209,20 @@ export const useAuthStore = defineStore('auth', () => {
   };
 
   // Set up auth state change listener
+  const setupAuthListener = () => {
+    const { data } = supabase.auth.onAuthStateChange((event, session) => {
+      if (session) {
+        fetchUserProfile();
+      } else {
+        currentUser.value = null;
+      }
+    });
+
+    // Return unsubscribe function
+    return () => {
+      data.subscription.unsubscribe();
+    };
+  };
 
   return {
     // State
@@ -225,5 +239,6 @@ export const useAuthStore = defineStore('auth', () => {
     signOut,
     resetPassword,
     updateProfile,
+    setupAuthListener, // Added this to the returned object
   };
 });
