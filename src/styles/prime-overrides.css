@@ -1,0 +1,205 @@
+/**
+ * PrimeVue Component Overrides
+ * This file customizes PrimeVue components to match our design system
+ */
+
+/* Base theme variable overrides */
+:root {
+  /* PrimeVue base colors */
+  --primary-50: #e5f1ff;
+  --primary-100: #cce3ff;
+  --primary-200: #99c7ff;
+  --primary-300: #66aaff;
+  --primary-400: #338eff;
+  --primary-500: #0a84ff; /* Primary brand color */
+  --primary-600: #0060df;
+  --primary-700: #0052cc;
+  --primary-800: #0044a8;
+  --primary-900: #003584;
+  
+  /* Custom variables specific to PrimeVue */
+  --primary-color: var(--color-accent);
+  --primary-color-text: #ffffff;
+  --surface-ground: var(--color-bg);
+  --surface-section: var(--color-surface);
+  --surface-card: var(--color-surface);
+  --surface-overlay: var(--color-bg);
+  --surface-border: var(--color-border);
+  --surface-hover: var(--color-surface);
+  --focus-ring: 0 0 0 2px var(--color-accent);
+  --border-radius: var(--radius-sm);
+}
+
+/* Dark theme adjustments */
+:root[data-theme='dark'] {
+  --surface-ground: var(--color-bg);
+  --surface-section: var(--color-surface);
+  --surface-card: var(--color-surface);
+  --surface-overlay: var(--color-bg);
+  --surface-border: var(--color-border);
+}
+
+/* Button component overrides */
+.p-button {
+  border-radius: var(--radius-sm);
+  padding: var(--sp-2) var(--sp-4);
+  font-size: var(--fz-body);
+  font-weight: 500;
+  transition: all 0.2s ease;
+  min-height: 44px; /* Minimum touch target size */
+}
+
+.p-button:focus {
+  box-shadow: 0 0 0 2px var(--color-accent-subtle);
+}
+
+.p-button.p-button-text:hover {
+  background-color: var(--color-accent-subtle);
+  color: var(--color-accent);
+}
+
+/* Input component overrides */
+.p-inputtext {
+  border-radius: var(--radius-sm);
+  padding: var(--sp-2) var(--sp-3);
+  min-height: 44px;
+}
+
+.p-inputtext:focus {
+  box-shadow: 0 0 0 2px var(--color-accent-subtle);
+  border-color: var(--color-accent);
+}
+
+/* Dialog component overrides */
+.p-dialog {
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+}
+
+.p-dialog-header {
+  border-top-left-radius: var(--radius-lg);
+  border-top-right-radius: var(--radius-lg);
+  padding: var(--sp-4);
+}
+
+.p-dialog-content {
+  padding: var(--sp-4);
+}
+
+.p-dialog-footer {
+  border-bottom-left-radius: var(--radius-lg);
+  border-bottom-right-radius: var(--radius-lg);
+  padding: var(--sp-4);
+}
+
+/* Card component overrides */
+.p-card {
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  transition: all 0.3s ease;
+}
+
+.p-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Accordion component overrides - used in FAQ */
+.p-accordion .p-accordion-header-link {
+  padding: var(--sp-4);
+  font-weight: 500;
+  transition: background-color 0.2s ease;
+  border-radius: var(--radius-lg);
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+}
+
+.p-accordion .p-accordion-content {
+  padding: var(--sp-4);
+  line-height: var(--lh-relaxed);
+}
+
+.p-accordion .p-accordion-toggle-icon {
+  color: var(--color-accent);
+  transition: transform 0.3s ease;
+}
+
+.p-accordion-tab-active .p-accordion-toggle-icon {
+  transform: rotate(180deg);
+}
+
+/* TabView component overrides */
+.p-tabview .p-tabview-nav {
+  border-bottom: 1px solid var(--color-border);
+}
+
+.p-tabview .p-tabview-nav li .p-tabview-nav-link {
+  border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+  padding: var(--sp-3) var(--sp-4);
+  min-height: 44px;
+}
+
+.p-tabview .p-tabview-nav li.p-highlight .p-tabview-nav-link {
+  color: var(--color-accent);
+  border-color: var(--color-accent);
+}
+
+/* Toast component overrides */
+.p-toast {
+  font-family: var(--font-sans);
+}
+
+.p-toast .p-toast-message {
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+}
+
+.p-toast .p-toast-icon-close {
+  min-width: 32px;
+  min-height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Dropdown and Select components */
+.p-dropdown,
+.p-multiselect {
+  border-radius: var(--radius-sm);
+  min-height: 44px;
+}
+
+.p-dropdown-panel,
+.p-multiselect-panel {
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-lg);
+}
+
+.p-dropdown-item,
+.p-multiselect-item {
+  padding: var(--sp-2) var(--sp-3);
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+}
+
+/* Reduced motion accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .p-accordion-toggle-icon,
+  .p-card:hover,
+  .p-button,
+  .p-checkbox-box,
+  .p-radiobutton-box,
+  .p-dropdown-trigger {
+    transition: none !important;
+  }
+  
+  .p-card:hover {
+    transform: none !important;
+  }
+  
+  .p-accordion-tab-active .p-accordion-toggle-icon {
+    transform: none !important;
+  }
+}
